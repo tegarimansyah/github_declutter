@@ -11,6 +11,7 @@
 
       <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div class="px-4 py-4 sm:px-0">
+          <Info />
           <div class="mb-10">
               <input v-model="username" ref="username" type="text" name="username" id="username" autocomplete="off" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg sm:text-sm border-gray-300 rounded-md mr-5" placeholder="Github Username" />
               <input v-model="token" ref="token" type="password" name="token" id="token" autocomplete="off" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg sm:text-sm border-gray-300 rounded-md mr-5" placeholder="Github Token" />
@@ -31,10 +32,8 @@
 <script setup>
 import Table from './components/Table.vue'
 import UserProfile from './components/UserProfile.vue'
+import Info from './components/Info.vue'
 import axios from 'axios';
-
-// Get Personal Access Token here: https://github.com/settings/tokens
-// Scope: repo, gist, delete_repo
 </script>
 
 <script>
