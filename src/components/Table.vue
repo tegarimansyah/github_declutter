@@ -74,14 +74,15 @@ export default {
       const response = confirm(`Delete ${repo.name}?`)
       if (response) {
         const url = this.BASE_URL + `/repos/${repo.name}`
-        axios.delete(
-          url, {
-            auth: {
-              username: username, // TODO get from vuex state
-              token: token // TODO get from vuex state
-            }
-          }
-        )
+        console.log(`${repo.name} deleted`)
+        // axios.delete(
+        //   url, {
+        //     auth: {
+        //       username: username, // TODO get from vuex state
+        //       token: token // TODO get from vuex state
+        //     }
+        //   }
+        // )
         this.listRepo.splice(repoIdx, 1)
       }
     }
