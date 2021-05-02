@@ -13,8 +13,8 @@
         <div class="px-4 py-4 sm:px-0">
           <Info />
           <div class="mb-10">
-              <input v-model="username" ref="username" type="text" name="username" id="username" autocomplete="off" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg sm:text-sm border-gray-300 rounded-md mr-5" placeholder="Github Username" />
-              <input v-model="token" ref="token" type="password" name="token" id="token" autocomplete="off" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg sm:text-sm border-gray-300 rounded-md mr-5" placeholder="Github Token" />
+              <input v-model="username" type="text" name="username" id="username" autocomplete="off" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg sm:text-sm border-gray-300 rounded-md mr-5" placeholder="Github Username" />
+              <input v-model="token" type="password" name="token" id="token" autocomplete="off" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg sm:text-sm border-gray-300 rounded-md mr-5" placeholder="Github Token" />
               <button class="mt-3 p-2 shadow-sm  lg:text-lg sm:text-sm border-gray-500 rounded-md border-2" v-on:click="get_data">Fetch Data</button>
           </div>
           <UserProfile v-if="profile" :userProfile="profile" />
