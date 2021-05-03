@@ -13,8 +13,8 @@
         <div class="px-4 py-4 sm:px-0">
           <Info />
           <div class="mb-10">
-              <input v-model="username" type="text" name="username" id="username" autocomplete="off" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg sm:text-sm border-gray-300 rounded-md mr-5" placeholder="Github Username" />
-              <input v-model="token" type="password" name="token" id="token" autocomplete="off" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg sm:text-sm border-gray-300 rounded-md mr-5" placeholder="Github Token" />
+              <input v-model="Username" type="text" name="username" id="username" autocomplete="off" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg sm:text-sm border-gray-300 rounded-md mr-5" placeholder="Github Username" />
+              <input v-model="Token" type="password" name="token" id="token" autocomplete="off" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 lg:text-lg sm:text-sm border-gray-300 rounded-md mr-5" placeholder="Github Token" />
               <button class="mt-3 p-2 shadow-sm  lg:text-lg sm:text-sm border-gray-500 rounded-md border-2" v-on:click="get_data">Fetch Data</button>
           </div>
           <UserProfile v-if="profile" :userProfile="profile" />
@@ -39,19 +39,17 @@ import axios from 'axios';
 <script>
 
 export default {
-  data() {
-    return {
-      username: '',
-      token: '',
+  data: () => ({
+      Username: '',
+      Token: '',
       profile: null,
       listRepo: [],
-      BASE_URL: import.meta.env.VITE_GITHUB_BASE_URL
-    }
-  },
+      BASE_URL: import.meta.env.VITE_GITHUB_BASE_URL || "https://api.github.com"
+  }),
   methods: {
     get_data() {
-      this.get_profile(this.username, this.token);
-      this.get_all_repo(this.username, this.token)
+      this.get_profile(this.Username, this.Token);
+      this.get_all_repo(this.Username, this.Token)
     },
     get_profile(username, password) {
       const url = this.BASE_URL + `/user`
@@ -87,17 +85,13 @@ export default {
               }) // end of push
           });
 
-          console.log(response)
 
           try {
-            console.log(response.headers['link'])
             const next_page = response.headers['link'].match(/&page=(\d+)>; rel="next".*$/)[1]
             this.get_all_repo(username, password, next_page)
           }
           catch {
-            console.log(response.headers['link'])
             this.profile.numRepos = this.listRepo.length
-            console.log(`Fetching ${this.listRepo.length} Repo(s)`)
           }
 
         }
