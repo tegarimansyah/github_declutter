@@ -1,8 +1,11 @@
-node_modules
 .DS_Store
-dist
-dist-ssr
-*.local
+node_modules
+/build
+/.svelte-kit
+/package
 .env
-.vscode
-archive/**/*
+.env.*
+!.env.example
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+archive
