@@ -1,26 +1,36 @@
 {
-  "name": "github_declutter",
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
-  },
-  "dependencies": {
-    "@heroicons/vue": "^1.0.1",
-    "axios": "^0.21.1",
-    "vue": "^3.0.5",
-    "vue-gtag-next": "^1.14.0",
-    "vuex": "^4.0.0"
-  },
-  "devDependencies": {
-    "@headlessui/vue": "^1.1.1",
-    "@tailwindcss/forms": "^0.3.2",
-    "@vitejs/plugin-vue": "^1.2.2",
-    "@vue/compiler-sfc": "^3.0.5",
-    "autoprefixer": "^10.2.5",
-    "postcss": "^8.2.13",
-    "tailwindcss": "^2.1.2",
-    "vite": "^2.2.3"
-  }
+	"name": "github-declutter",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/kit": "^1.20.4",
+		"autoprefixer": "^10.4.14",
+		"daisyui": "^3.1.6",
+		"eslint": "^8.28.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-svelte": "^2.30.0",
+		"postcss": "^8.4.24",
+		"prettier": "^2.8.0",
+		"prettier-plugin-svelte": "^2.10.1",
+		"svelte": "^4.0.0",
+		"svelte-check": "^3.4.3",
+		"tailwindcss": "^3.3.2",
+		"typescript": "^5.0.0",
+		"vite": "^4.3.6"
+	},
+	"type": "module",
+	"dependencies": {
+		"axios": "^1.4.0",
+		"clsx": "^1.2.1"
+	}
 }
