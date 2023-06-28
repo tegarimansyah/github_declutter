@@ -26,7 +26,7 @@
 				<p class="mt-2 flex items-center text-sm text-gray-500">
 					<span class="truncate">{$userStore.total_repos} Repo(s)</span>
 					{#if $fetchingRepoStore === true}
-						<span class="ml-1"> - Fetching in progress to get private repo count</span>
+						<span class="ml-1"> - Fetching in progress</span>
 					{/if}
 				</p>
 			</div>

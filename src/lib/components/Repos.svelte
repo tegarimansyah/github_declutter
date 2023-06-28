@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { userStore, fetchingRepoStore, repoStore, currentRepoStore } from '$lib/utils/store';
+	import { userStore, fetchingRepoStore, repoStore } from '$lib/utils/store';
 	import { clsx } from 'clsx';
 
 	import { github } from '$lib/utils/github';
@@ -56,7 +56,25 @@
 		if (onlyPublicRepo) {
 			filteredRepos = filteredRepos.filter((repo) => !repo.private);
 		}
-    userStore.update((n) => ({ ...n, total_repos: filteredRepos.length }));
+		userStore.update((n) => ({ ...n, total_repos: filteredRepos.length }));
+	}
+
+	async function deleteRepo(full_name: string) {
+		const response = confirm(`Deleting ${full_name}? This action can't be undo`);
+		if (response) {
+			try {
+				const response = await github.delete(`repos/${full_name}`);
+				if (response.status === 204) alert(`${full_name} has been deleted`);
+				if (response.status === 403) alert(`You don't have access to delete ${full_name}`);
+				repoStore.update((repoList) => {
+					return repoList.filter((repo) => repo.full_name !== full_name);
+				});
+				updateRepoList();
+			} catch (error) {
+				// Handle error
+				alert(error);
+			}
+		}
 	}
 </script>
 
@@ -93,11 +111,13 @@
 				<tr class="hover">
 					<th>{i + 1}</th>
 					<td>{row.id}</td>
-					<td>{row.full_name}</td>
+					<td class="hover:text-blue-500"
+						><a href="https://github.com/{row.full_name}" target="_blank" rel="noopener">{row.full_name}</a></td
+					>
 					<td>{row.private}</td>
 					<td><span class="font-bold">{row.language}</span> | {row.description}</td>
 					<td>{row.updated_at}</td>
-					<td>Delete</td>
+					<td><button on:click={() => deleteRepo(row.full_name)}>Delete</button></td>
 				</tr>
 			{:else}
 				<tr>
