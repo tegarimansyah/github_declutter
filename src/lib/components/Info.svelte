@@ -21,7 +21,7 @@
 			We are not saving your data. All process is only between your own browser with Github API.
 		</p>
 		<p class="mt-3 text-xs">
-			Created by <a class="text-blue-400 hover:text-black" href="https://www.linkedin.com/in/tegarimansyah/">
+			Created by <a class="text-blue-400 hover:text-black" href="https://twitter.com/tegar_imansyah/">
 				tegarimansyah
 			</a>
 			. This source code available on
