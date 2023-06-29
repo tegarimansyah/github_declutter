@@ -31,13 +31,13 @@ $ npm run dev -- --host
 
 ## Contribution
 
-* Bug report -> Create issue
-* Feature request -> Create issue
-* Ask something? -> Create issue or mention @tegar_imansyah in twitter
-* Code contribution -> Read CONTRIBUTING.md
+* Bug report -> [Create Bug report issue](https://github.com/tegarimansyah/github_declutter/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=)
+* Feature request -> [Create Feature Request issue](https://github.com/tegarimansyah/github_declutter/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.md&title=)
+* Ask something? -> [Create issue](https://github.com/tegarimansyah/github_declutter/issues/new) or [mention @tegar_imansyah in twitter](https://twitter.com/intent/tweet?text=@tegar_imansyah%20github-declutter.tegar.my.id)
+* Code contribution -> Read [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Find it helpful?
 
-* Share your story to your social media. Please also let me know by mentioning @tegar_imansyah or fill this form. 
+* Share your story to your social media. Please also let me know by mentioning [@tegar_imansyah](https://twitter.com/intent/tweet?text=@tegar_imansyah%20github-declutter.tegar.my.id) and I will share your story in our use case. 
 
 ## License: MIT
