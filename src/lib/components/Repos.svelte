@@ -30,6 +30,7 @@
 
 				if (repos.length < perPage) {
 					// Last page reached, break the loop
+					umami.track(`Get all repo success`);
 					fetchingRepoStore.set(false);
 					break;
 				}
@@ -38,6 +39,7 @@
 			} catch (error) {
 				// Handle error
 				alert(error);
+				umami.track(`Get all repo failed: ${error}`);
 				break;
 			}
 		}
@@ -64,8 +66,14 @@
 		if (response) {
 			try {
 				const response = await github.delete(`repos/${full_name}`);
-				if (response.status === 204) alert(`${full_name} has been deleted`);
-				if (response.status === 403) alert(`You don't have access to delete ${full_name}`);
+				if (response.status === 204) {
+					alert(`${full_name} has been deleted`);
+					umami.track(`delete repo success`);
+				}
+				if (response.status === 403) {
+					alert(`You don't have access to delete ${full_name}`);
+					umami.track(`delete repo failed: ${response.status}`);
+				}
 				repoStore.update((repoList) => {
 					return repoList.filter((repo) => repo.full_name !== full_name);
 				});
@@ -73,6 +81,7 @@
 			} catch (error) {
 				// Handle error
 				alert(error);
+				umami.track(`delete repo failed: ${error}`);
 			}
 		}
 	}

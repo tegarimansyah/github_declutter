@@ -10,19 +10,23 @@
 		try {
 			const response = await github.get('/user');
 			userStore.set({ ...response.data, total_repos: 0 });
+			umami.track(`Auth success`);
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				if (error.response !== undefined) {
 					if (error.response.status === 401) {
 						alert('Your token is not valid');
+						umami.track(`Auth failed: ${error.response.status}`);
 					} else {
 						alert(`Something went wrong: "${error.message}" with code ${error.response.status}`);
+						umami.track(`Auth failed: ${error.response.status}`);
 					}
 				} else {
 					alert(`Something went wrong: ${error.message}`);
 				}
 			} else {
 				alert(error);
+				umami.track(`Auth failed: ${error}`);
 			}
 		}
 	}
